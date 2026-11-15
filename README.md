@@ -20,6 +20,10 @@ npm run preview
 
 Vercel deployment is configured for SPA routes in `vercel.json`. Import the repository into Vercel and deploy with the default Vite build settings (`npm run build`, output directory `dist`).
 
+## GitHub Pages
+
+`.github/workflows/pages.yml` builds and deploys the Vite output to GitHub Pages on pushes to `main`. The build uses `/SSKWebsite/` as its base path, and `public/404.html` restores direct SPA routes after GitHub Pages' 404 response. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**.
+
 ## Enquiries
 
 Set `VITE_API_BASE_URL` to an HTTPS API base URL. The site posts JSON to `/api/enquiries` and only shows the success state after a successful response. Implement that endpoint in a backend (for example, a Vercel Function backed by PostgreSQL); validate and rate-limit submissions server-side, store timestamps in UTC, and apply your retention policy. Without the endpoint configured, the form explains that online submission is unavailable and offers the WhatsApp/email fallback.
